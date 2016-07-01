@@ -7,4 +7,4 @@ RUN apt-get update &&\
     yes | mix do local.hex, archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez, local.rebar
 
 WORKDIR /app
-CMD ["mix", "phoenix.start"]
+CMD ["mix", "phoenix.server"]
