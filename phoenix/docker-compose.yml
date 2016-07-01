@@ -1,0 +1,18 @@
+version: "2"
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      PGHOST: "db"
+      PGUSER: "postgres"
+    volumes:
+      - ".:/app/"
+    ports:
+      - "4000:4000"
+    tty: true
+    stdin_open: true
+  db:
+    image: postgres
+
