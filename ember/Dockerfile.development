@@ -1,0 +1,5 @@
+FROM node:onbuild
+RUN npm install -g bower && bower install --allow-root
+ENTRYPOINT ["node_modules/ember-cli/bin/ember"]
+EXPOSE 4200
+

@@ -1,0 +1,22 @@
+version: "2"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.development
+    tty: true
+    stdin_open: true
+    command: "build --watch"
+    volumes:
+      - "./dist:/usr/src/app/dist"
+      - "./app:/usr/src/app/app"
+      - "./config:/usr/src/app/config"
+      - "./tests:/usr/src/app/tests"
+  web:
+    build: .
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+    volumes:
+      - "./dist:/usr/share/nginx/html"
